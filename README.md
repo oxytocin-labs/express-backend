@@ -80,3 +80,16 @@ docker run -it [ID] /bin/sh
 - This is using [mysql](https://hub.docker.com/_/mysql#:~:text=How%20to%20use%20this%20image) docker image.
 - When you use `docker run ...` (inside the `scripts/linux/run-database.sh`) for this docker image, it creates a database and runs all files in `scripts/` in alphabetical order.
 - When you stop the docker image, all data in the database is lost. There's a way to prevent that in the [link](https://hub.docker.com/_/mysql#:~:text=How%20to%20use%20this%20image), or alternatively you can make a sql dump.
+
+## To update .env file
+```
+# Detect changes again in env/.env file
+git update-index --no-skip-worktree env/.env
+
+# Add new changes and commit
+git add env/.env
+git commit
+
+# Ignore future changes
+git update-index --skip-worktree env/.env
+```
