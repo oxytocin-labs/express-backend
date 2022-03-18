@@ -22,6 +22,13 @@
      └── .env
 ```
 
+#### Step 1.5 Enable powershell scripts
+```
+# Windows prevents the execution of powershell scripts by default
+# To enable them, open a powershell window as administrator and run this
+Set-ExecutionPolicy RemoteSigned
+```
+
 #### Step 2. Build docker network and images
 <details>
   <summary>Linux/MacOS commands</summary>
@@ -29,6 +36,14 @@
     # This should be run on /express-backend directory
     source ./scripts/linux/setup-names.sh
     ./scripts/linux/setup.sh
+</details>
+
+<details>
+  <summary>Powershell commands</summary>
+
+    # This should be run on /express-backend directory
+    .\scripts\powershell\setup-names.ps1
+    .\scripts\powershell\setup.ps1 
 </details>
 
 #### 3. Run database docker image (Terminal 1)
@@ -39,6 +54,13 @@
     source ./scripts/linux/setup-names.sh
     ./scripts/linux/run-database.sh
 </details>
+<details>
+  <summary>Powershell commands</summary>
+
+    # This should be run on /express-backend directory
+    .\scripts\powershell\setup-names.ps1
+    .\scripts\powershell\run-database.ps1 
+</details>
 
 #### 4. Run server docker image (Terminal 2)
 <details>
@@ -47,6 +69,13 @@
     # This should be run on /express-backend directory
     source ./scripts/linux/setup-names.sh
     ./scripts/linux/run-express-dev.sh
+</details>
+<details>
+  <summary>Powershell commands</summary>
+
+    # This should be run on /express-backend directory
+    .\scripts\powershell\setup-names.ps1
+    .\scripts\powershell\run-express-dev.ps1 
 </details>
 
 
