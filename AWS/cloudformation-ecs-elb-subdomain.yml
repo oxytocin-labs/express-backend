@@ -197,7 +197,7 @@ Resources:
   LoadBalancerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: LoadBalancerSecurityGroup
+      GroupName: !Sub "${AppName}LBSG"
       GroupDescription: Security group for load balancer
       SecurityGroupIngress:
         - IpProtocol: tcp
@@ -350,4 +350,4 @@ Resources:
       - GitHubActionsUserAccessKey
     Properties:
       Name: !Sub "${AppName}githubuser"
-      SecretString: !Sub '{"AccessKeyId":"${GitHubActionsUserAccessKey}","SecretAccessKey":"${GitHubActionsUserAccessKey.SecretAccessKey}"}"}'
+      SecretString: !Sub '{"AccessKeyId":"${GitHubActionsUserAccessKey}","SecretAccessKey":"${GitHubActionsUserAccessKey.SecretAccessKey}"}'
