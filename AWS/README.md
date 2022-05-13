@@ -14,6 +14,7 @@
   - ```
     aws configure --profile [PROFILE]
     ```
+- Move DNS management to Route53 from current hosting provider ex. NameCheap, GoDaddy
 
 ### Basic Deployment (DB + server)
 
