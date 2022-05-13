@@ -131,15 +131,15 @@ Resources:
           ContainerPort: 5000
           ContainerName: !Sub "${AppName}container"
   # Certificate Manager
-  ACMCertificate:
-    Type: AWS::CertificateManager::Certificate
-    DependsOn: DNS
-    Properties:
-      DomainName: !Sub "api.${SubDomainName}"
-      DomainValidationOptions:
-        - DomainName: !Sub "api.${SubDomainName}"
-          HostedZoneId: !Ref DNS
-      ValidationMethod: DNS
+#   ACMCertificate:
+#     Type: AWS::CertificateManager::Certificate
+#     DependsOn: DNS
+#     Properties:
+#       DomainName: !Sub "api.${SubDomainName}"
+#       DomainValidationOptions:
+#         - DomainName: !Sub "api.${SubDomainName}"
+#           HostedZoneId: !Ref DNS
+#       ValidationMethod: DNS
   # Auto scaling
   AutoScalingRole:
     Type: AWS::IAM::Role
@@ -262,24 +262,24 @@ Resources:
       Protocol: HTTP
       VpcId: !Ref VPCID
   # Route 53
-  DNS:
-    Type: "AWS::Route53::HostedZone"
-    Properties:
-      HostedZoneConfig:
-        Comment: !Sub "Hosted zone for ${AppName}"
-      Name: !Sub "${SubDomainName}."
-  ApiDomain:
-    Type: AWS::Route53::RecordSet
-    DependsOn:
-      - LoadBalancer
-      - DNS
-    Properties:
-      HostedZoneName: !Sub "${SubDomainName}."
-      Name: !Sub "api.${SubDomainName}"
-      Type: CNAME
-      TTL: 60
-      ResourceRecords:
-        - !GetAtt LoadBalancer.DNSName
+#   DNS:
+#     Type: "AWS::Route53::HostedZone"
+#     Properties:
+#       HostedZoneConfig:
+#         Comment: !Sub "Hosted zone for ${AppName}"
+#       Name: !Sub "${SubDomainName}."
+#   ApiDomain:
+#     Type: AWS::Route53::RecordSet
+#     DependsOn:
+#       - LoadBalancer
+#       - DNS
+#     Properties:
+#       HostedZoneName: !Sub "${SubDomainName}."
+#       Name: !Sub "api.${SubDomainName}"
+#       Type: CNAME
+#       TTL: 60
+#       ResourceRecords:
+#         - !GetAtt LoadBalancer.DNSName
   # Database
   MainDatabase:
     Type: AWS::RDS::DBInstance
