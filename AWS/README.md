@@ -56,6 +56,7 @@ Steps:
             ├── production.yml
             └── sandbox.yml
 ```
+##### Step 3.5. Copy VPC data into setup-names.sh
 
 ##### Step 4. Create the cloudformation stack
 <details>
