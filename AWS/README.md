@@ -131,6 +131,5 @@ Repeat steps 3-5 and 7-8 with different:
 ### Notes
 - Whenever the `env/.env` file is updated, the secret in AWS `Secrets Manager` has to be updated too.
 
-### Notes
 - If unable to connect to RDS using MySQL, then add the following inboud rules to the security group of RDS.
 ![SG Example](assets/SG.png)
