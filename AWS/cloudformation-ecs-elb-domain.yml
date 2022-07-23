@@ -14,7 +14,7 @@ Parameters:
     Description: A subnet in the VPC that's in a different Availability Zone as Subnet1ID
   DomainName:
     Type: String
-    Description: The subdomain to use for this app. Api will be located in "${DomainName}"
+    Description: The domain to use for this app. Api will be located in "${DomainName}"
   DBRootPassword:
     Type: String
     Description: Initial password for database root user

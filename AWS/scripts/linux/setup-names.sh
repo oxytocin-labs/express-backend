@@ -7,7 +7,7 @@ export TEMPLATE_URL=
 # Root password for the database
 export DB_ROOT_PASSWORD=CHANGE_THIS_PASSWORD
 
-# Subdomain to use
+# Domain to use
 export DOMAIN_NAME=
 
 # Get this values from AWS. Use any two subnets for now.

@@ -6,4 +6,4 @@ aws cloudformation create-stack --stack-name ${env:APP_NAME}stack `
     ParameterKey=VPCID,ParameterValue=$env:VPC_ID `
     ParameterKey=Subnet1ID,ParameterValue=$env:SUBNET_ID_1 `
     ParameterKey=Subnet2ID,ParameterValue=$env:SUBNET_ID_2 `
-    ParameterKey=SubDomainName,ParameterValue=$env:SUBDOMAIN_NAME
+    ParameterKey=DomainName,ParameterValue=$env:DOMAIN_NAME

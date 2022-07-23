@@ -7,8 +7,8 @@ $env:TEMPLATE_URL=
 # Root password for the database
 $env:DB_ROOT_PASSWORD="CHANGE_THIS_PASSWORD"
 
-# Subdomain to use
-$env:SUBDOMAIN_NAME=
+# Domain to use
+$env:DOMAIN_NAME=
 
 # Get this values from AWS. Use any two subnets for now.
 $env:VPC_ID=

@@ -27,7 +27,7 @@ aws configure list
 # List profiles
 aws configure list-profiles
 # Change default (linux)
-AWS_DEFAULT_PROFILE=[PROFILE]
+export AWS_DEFAULT_PROFILE=[PROFILE]
 # Change default (powershell)
 $env:AWS_PROFILE="[PROFILE]"
 # Check again that values are correct
@@ -38,11 +38,11 @@ aws configure list
 Steps:
 1. In AWS, go to `S3 > Buckets`
 2. Select a bucket (or create a bucket)
-3. Upload `cloudformation-ecs-elb-subdomain.yml` file
+3. Upload `cloudformation-ecs-elb-domain.yml` file
 4. Copy `Object URL` of the file for next step
 
 ##### Step 3. Set the variables defined in this files
-- If main domain is `domain.com`, you can use `SUBDOMAIN_NAME=app.domain.com`
+- If main domain is `domain.com`, you can use `DOMAIN_NAME=domain.com`
 ```
 # Check this files
 .
@@ -64,6 +64,7 @@ Steps:
   <summary>Linux/MacOS commands</summary>
 
     # This should be run on /express-backend directory
+    chmod +x ./AWS/scripts/linux/setup.sh \
     source ./AWS/scripts/linux/setup-names.sh
     ./AWS/scripts/linux/setup.sh
 </details>
@@ -122,7 +123,7 @@ aws ecs update-service --desired-count 1 `
 Repeat steps 3-5 and 7-8 with different:
 - APP_NAME
 - DB_ROOT_PASSWORD
-- SUBDOMAIN_NAME
+- DOMAIN_NAME
   - Can use `app.sandbox` prefix
 - AWS_REGION (if needed)
   - Also change it in AWS cli (`aws configure --profile [PROFILE]`)
