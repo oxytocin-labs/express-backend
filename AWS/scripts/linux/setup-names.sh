@@ -8,7 +8,7 @@ export TEMPLATE_URL=
 export DB_ROOT_PASSWORD=CHANGE_THIS_PASSWORD
 
 # Subdomain to use
-export SUBDOMAIN_NAME=
+export DOMAIN_NAME=
 
 # Get this values from AWS. Use any two subnets for now.
 export VPC_ID=

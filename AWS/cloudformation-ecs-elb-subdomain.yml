@@ -12,9 +12,9 @@ Parameters:
   Subnet2ID:
     Type: String
     Description: A subnet in the VPC that's in a different Availability Zone as Subnet1ID
-  SubDomainName:
+  DomainName:
     Type: String
-    Description: The subdomain to use for this app. Api will be located in "api.${SubDomainName}"
+    Description: The subdomain to use for this app. Api will be located in "${DomainName}"
   DBRootPassword:
     Type: String
     Description: Initial password for database root user
@@ -130,16 +130,16 @@ Resources:
         - TargetGroupArn: !Ref TargetGroup
           ContainerPort: 5000
           ContainerName: !Sub "${AppName}container"
-  # Certificate Manager
-#   ACMCertificate:
-#     Type: AWS::CertificateManager::Certificate
-#     DependsOn: DNS
-#     Properties:
-#       DomainName: !Sub "api.${SubDomainName}"
-#       DomainValidationOptions:
-#         - DomainName: !Sub "api.${SubDomainName}"
-#           HostedZoneId: !Ref DNS
-#       ValidationMethod: DNS
+ # Certificate Manager
+  ACMCertificate:
+    Type: AWS::CertificateManager::Certificate
+    DependsOn: DNS
+    Properties:
+      DomainName: !Sub "${DomainName}"
+      DomainValidationOptions:
+        - DomainName: !Sub "${DomainName}"
+          HostedZoneId: !Ref DNS
+      ValidationMethod: DNS
   # Auto scaling
   AutoScalingRole:
     Type: AWS::IAM::Role
@@ -261,25 +261,25 @@ Resources:
       Port: 5000
       Protocol: HTTP
       VpcId: !Ref VPCID
-  # Route 53
-#   DNS:
-#     Type: "AWS::Route53::HostedZone"
-#     Properties:
-#       HostedZoneConfig:
-#         Comment: !Sub "Hosted zone for ${AppName}"
-#       Name: !Sub "${SubDomainName}."
-#   ApiDomain:
-#     Type: AWS::Route53::RecordSet
-#     DependsOn:
-#       - LoadBalancer
-#       - DNS
-#     Properties:
-#       HostedZoneName: !Sub "${SubDomainName}."
-#       Name: !Sub "api.${SubDomainName}"
-#       Type: CNAME
-#       TTL: 60
-#       ResourceRecords:
-#         - !GetAtt LoadBalancer.DNSName
+ # Route 53
+  DNS:
+    Type: "AWS::Route53::HostedZone"
+    Properties:
+      HostedZoneConfig:
+        Comment: !Sub "Hosted zone for ${AppName}"
+      Name: !Sub "${DomainName}."
+  ApiDomain:
+    Type: AWS::Route53::RecordSet
+    DependsOn:
+      - LoadBalancer
+      - DNS
+    Properties:
+      HostedZoneName: !Sub "${DomainName}."
+      Name: !Sub "api.${DomainName}"
+      Type: CNAME
+      TTL: 60
+      ResourceRecords:
+        - !GetAtt LoadBalancer.DNSName
   # Database
   MainDatabase:
     Type: AWS::RDS::DBInstance
