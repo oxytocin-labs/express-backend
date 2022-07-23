@@ -281,20 +281,8 @@ Resources:
       ResourceRecords:
         - !GetAtt LoadBalancer.DNSName
   # Database
-  DatabaseSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupName: !Sub "${AppName}DBSG"
-      GroupDescription: Security group for database
-      SecurityGroupIngress:
-        - IpProtocol: "-1"
-          CidrIp: 0.0.0.0/0
-        - IpProtocol: "-1"
-          CidrIp: ::/0
   MainDatabase:
     Type: AWS::RDS::DBInstance
-    DependsOn:
-      - DatabaseSecurityGroup
     Properties:
       AllocatedStorage: "20"
       AutoMinorVersionUpgrade: True
@@ -316,8 +304,6 @@ Resources:
       PubliclyAccessible: True
       StorageEncrypted: False
       StorageType: gp2
-      SecurityGroups:
-        - !GetAtt DatabaseSecurityGroup.GroupId
   # Github Actions
   GitHubActionsUser:
     Type: AWS::IAM::User
