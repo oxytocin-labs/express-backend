@@ -11,6 +11,6 @@ export DB_ROOT_PASSWORD=CHANGE_THIS_PASSWORD
 export DOMAIN_NAME=
 
 # Get this values from AWS. Use any two subnets for now.
-export VPC_ID=vpc-
+export VPC_ID=
 export SUBNET_ID_1=
 export SUBNET_ID_2=
