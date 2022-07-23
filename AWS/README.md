@@ -61,7 +61,7 @@ Steps:
 
 ##### Step 4. Create the cloudformation stack
 <details>
-  <summary>Linux/MacOS commands</summary>
+  <summary>Linux/MacOS commands(run: chmod +x ./AWS/scripts/linux/setup.sh , if getting access issue)</summary>
 
     # This should be run on /express-backend directory
     chmod +x ./AWS/scripts/linux/setup.sh \
